@@ -180,8 +180,8 @@ describe('chromium', function () {
   it('runs tests in the context of a localhost https server with URL and port',
     function (done) {
       var url = 'https://localhost:8080/test.html';
-      run('url', ['-R', 'tap', '--https-server', '8080', '--url', url],
-        function (code, stdout) {
+      run('url', ['-R', 'tap', '--https-server', '8080', '--url', url,
+        '--allow-chrome-as-root'], function (code, stdout) {
           assert.equal(stdout, '# chromium:\n'
             + '1..1\n'
             + 'location.href = ' + url + '\n'
@@ -197,7 +197,7 @@ describe('chromium', function () {
   it('runs tests in the context of a localhost https server with URL only',
     function (done) {
       var url = 'https://localhost:7070/test.html';
-      run('url', ['-R', 'tap', '--url', url],
+      run('url', ['-R', 'tap', '--url', url, '--allow-chrome-as-root'],
         function (code, stdout) {
           assert.equal(stdout, '# chromium:\n'
             + '1..1\n'
@@ -213,8 +213,8 @@ describe('chromium', function () {
 
   it('runs tests in the context of a localhost https server with port only',
     function (done) {
-      run('url', ['-R', 'tap', '--https-server', '8080'],
-        function (code, stdout) {
+      run('url', ['-R', 'tap', '--https-server', '8080',
+        '--allow-chrome-as-root'], function (code, stdout) {
           assert.equal(stdout, '# chromium:\n'
             + '1..1\n'
             + 'location.href = https://localhost:8080/\n'
@@ -232,7 +232,7 @@ describe('chromium', function () {
 
   it('runs tests in the context of a localhost https server with random port',
     function (done) {
-      run('port', ['-R', 'tap', '--https-server'],
+      run('port', ['-R', 'tap', '--https-server', '--allow-chrome-as-root'],
         function (code, stdout) {
           assert.equal(code, 0);
           var lines = stdout.split('\n');
@@ -260,8 +260,8 @@ describe('chromium', function () {
 
   it('runs tests in the context of a localhost https server with naked url',
     function (done) {
-      run('port', ['-R', 'tap', '--url', 'https://localhost/index.html'],
-        function (code, stdout) {
+      run('port', ['-R', 'tap', '--url', 'https://localhost/index.html',
+        '--allow-chrome-as-root'], function (code, stdout) {
           assert.equal(code, 0);
           var lines = stdout.split('\n');
           var expected = [
