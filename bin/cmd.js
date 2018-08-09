@@ -24,6 +24,8 @@ function error() {
   }
 }
 
-mochify(_, opts)
+var m = mochify(_, opts)
   .on('error', error)
-  .bundle();
+  .on('mochify-ready', function () {
+    m.bundle();
+  });
