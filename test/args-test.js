@@ -27,6 +27,7 @@ describe('args', function () {
     assert.equal(opts.timeout, 2000);
     assert.equal(opts.yields, 0);
     assert.equal(opts['allow-chrome-as-root'], false);
+    assert.equal(opts['disable-chrome-image-loading'], false);
     assert.equal(opts['ignore-ssl-errors'], false);
     assert.equal(opts['browser-field'], true);
     assert.equal(opts.commondir, true);
@@ -301,11 +302,16 @@ describe('args', function () {
     assert.strictEqual(noValueOpts['https-server'], 0);
   });
 
-
   it('parses --allow-chrome-as-root', function () {
     var opts = args(['--allow-chrome-as-root']);
 
     assert(opts['allow-chrome-as-root']);
+  });
+
+  it('parses --disable-chrome-image-loading', function () {
+    var opts = args(['--disable-chrome-image-loading']);
+
+    assert(opts['disable-chrome-image-loading']);
   });
 
   it('defaults colors to null', function () {

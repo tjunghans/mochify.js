@@ -104,6 +104,7 @@ break at the `debugger` statement.
 - `--ignore-ssl-errors` tells Chrome whether or not to ignore ssl certificate
   issues (default is false)
 - `--allow-chrome-as-root` allows Chrome to run as root
+- `--disable-chrome-image-loading` prevent Chrome from loading images.
 - `--https-server` launches an HTTPS server on the specified port. If no port is given a random available port will be used.
 - `--viewport-width` tells Chrome to use a certain width for its viewport.
 - `--viewport-height` tells Chrome to use a certain height for its viewport.

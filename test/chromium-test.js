@@ -201,7 +201,6 @@ describe('chromium', function () {
       });
   });
 
-
   it('shows unicode diff', function (done) {
     run('unicode', ['-R', 'tap'], function (code, stdout) {
       assert.equal(stdout.indexOf('# chromium:\n'
@@ -371,6 +370,15 @@ describe('chromium', function () {
           done();
         });
     });
+
+  it.only('does not load images', function (done) {
+    run('require', ['-R', 'tap', '-r', '../image'], function (code, stdout) {
+      console.log(stdout);
+   //   assert.equal(stdout.split('\n')[2], 'required');
+      assert.equal(code, 0);
+      done();
+    });
+  });
 
   context('https-server with a port value given', function () {
     var server;
